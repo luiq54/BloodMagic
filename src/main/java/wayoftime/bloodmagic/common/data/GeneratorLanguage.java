@@ -665,6 +665,7 @@ public class GeneratorLanguage extends LanguageProvider
 		addItem(BloodMagicItems.DAGGER_OF_SACRIFICE, "Dagger of Sacrifice");
 		addItem(BloodMagicItems.SACRIFICIAL_DAGGER, "Sacrificial Knife");
 		addItem(BloodMagicItems.LAVA_CRYSTAL, "Lava Crystal");
+		addItem(BloodMagicItems.DEMON_PLACER, "Demon Placer");
 
 		addItem(BloodMagicItems.REAGENT_WATER, "Water Reagent");
 		addItem(BloodMagicItems.REAGENT_LAVA, "Lava Reagent");

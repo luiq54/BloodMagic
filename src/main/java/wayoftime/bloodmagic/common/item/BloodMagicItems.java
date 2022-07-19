@@ -190,6 +190,7 @@ public class BloodMagicItems
 	public static final RegistryObject<Item> TELEPOSER_FOCUS = BASICITEMS.register("teleposerfocus", () -> new ItemTeleposerFocus(0));
 	public static final RegistryObject<Item> ENHANCED_TELEPOSER_FOCUS = BASICITEMS.register("enhancedteleposerfocus", () -> new ItemTeleposerFocus(1));
 	public static final RegistryObject<Item> REINFORCED_TELEPOSER_FOCUS = BASICITEMS.register("reinforcedteleposerfocus", () -> new ItemTeleposerFocus(2));
+	public static final RegistryObject<Item> DEMON_PLACER = BASICITEMS.register("demonplacer", () -> new ItemDemonPlacer());
 
 	// Ritual stuffs
 	public static final RegistryObject<Item> WEAK_ACTIVATION_CRYSTAL = BASICITEMS.register("activationcrystalweak", () -> new ItemActivationCrystal(ItemActivationCrystal.CrystalType.WEAK));

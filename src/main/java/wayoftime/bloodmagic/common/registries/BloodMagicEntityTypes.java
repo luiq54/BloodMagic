@@ -5,6 +5,7 @@ import net.minecraft.world.entity.EntityType;
 import wayoftime.bloodmagic.BloodMagic;
 import wayoftime.bloodmagic.common.registration.impl.EntityTypeDeferredRegister;
 import wayoftime.bloodmagic.common.registration.impl.EntityTypeRegistryObject;
+import wayoftime.bloodmagic.entity.mob.EntityFallenAngel;
 import wayoftime.bloodmagic.entity.projectile.EntityBloodLight;
 import wayoftime.bloodmagic.entity.projectile.EntityMeteor;
 import wayoftime.bloodmagic.entity.projectile.EntityPotionFlask;
@@ -31,4 +32,5 @@ public class BloodMagicEntityTypes
 
 	public static final EntityTypeRegistryObject<EntityPotionFlask> FLASK = ENTITY_TYPES.register("potionflask", EntityType.Builder.<EntityPotionFlask>of(EntityPotionFlask::new, MobCategory.MISC).setTrackingRange(64).setUpdateInterval(1).sized(1, 1));
 
+	public static final EntityTypeRegistryObject<EntityFallenAngel> FALLEN_ANGEL = ENTITY_TYPES.register("fallenangel", EntityType.Builder.<EntityFallenAngel>of(EntityFallenAngel::new, MobCategory.MONSTER).setTrackingRange(8).setShouldReceiveVelocityUpdates(false).sized(0.7F, 1.8F));
 }

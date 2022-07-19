@@ -20,6 +20,7 @@ import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -46,7 +47,9 @@ import wayoftime.bloodmagic.client.render.entity.EntityShapedChargeRenderer;
 import wayoftime.bloodmagic.client.render.entity.EntityThrowingDaggerRenderer;
 import wayoftime.bloodmagic.client.render.entity.SoulSnareRenderer;
 import wayoftime.bloodmagic.client.render.entity.layers.BloodElytraLayer;
+import wayoftime.bloodmagic.client.render.entity.mob.FallenAngelRenderer;
 import wayoftime.bloodmagic.client.render.model.ModelMeteor;
+import wayoftime.bloodmagic.client.render.model.mob.ModelFallenAngel;
 import wayoftime.bloodmagic.client.screens.ScreenAlchemicalReactionChamber;
 import wayoftime.bloodmagic.client.screens.ScreenAlchemyTable;
 import wayoftime.bloodmagic.client.screens.ScreenFilter;
@@ -65,6 +68,7 @@ import wayoftime.bloodmagic.common.item.soul.ItemSentientSword;
 import wayoftime.bloodmagic.common.registries.BloodMagicEntityTypes;
 import wayoftime.bloodmagic.common.tile.BloodMagicTileEntities;
 import wayoftime.bloodmagic.core.registry.AlchemyArrayRendererRegistry;
+import wayoftime.bloodmagic.entity.mob.EntityFallenAngel;
 import wayoftime.bloodmagic.network.BloodMagicPacketHandler;
 import wayoftime.bloodmagic.network.SigilHoldingPacket;
 import wayoftime.bloodmagic.potion.FlaskColor;
@@ -86,6 +90,8 @@ public class ClientEvents
 	public static void registerLayerDefinition(EntityRenderersEvent.RegisterLayerDefinitions event)
 	{
 		event.registerLayerDefinition(BloodMagicModelLayerLocations.METEOR_LOC, ModelMeteor::createBodyLayer);
+
+		event.registerLayerDefinition(BloodMagicModelLayerLocations.FALLEN_ANGEL_LOC, ModelFallenAngel::createBodyLayer);
 	}
 
 	@SubscribeEvent
@@ -115,6 +121,8 @@ public class ClientEvents
 		event.registerEntityRenderer(BloodMagicEntityTypes.METEOR.getEntityType(), EntityMeteorRenderer::new);
 
 		event.registerEntityRenderer(BloodMagicEntityTypes.FLASK.getEntityType(), SoulSnareRenderer::new);
+		event.registerEntityRenderer(BloodMagicEntityTypes.FALLEN_ANGEL.getEntityType(), FallenAngelRenderer::new);
+
 //		event.registerBlockEntityRenderer(BloodMagicTileEntities.ALTAR_TYPE, RenderAltar::new);
 	}
 
@@ -343,5 +351,10 @@ public class ClientEvents
 	public static void onTextureStitchEvent(TextureStitchEvent.Pre event)
 	{
 		event.addSprite(BloodMagic.rl("item/curios_empty_living_armour_socket"));
+	}
+
+	@SubscribeEvent
+	public static void onAttributeCreate(EntityAttributeCreationEvent event) {
+		event.put(BloodMagicEntityTypes.FALLEN_ANGEL.get(), EntityFallenAngel.prepareAttributes().build());
 	}
 }
